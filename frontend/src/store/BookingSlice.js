@@ -46,7 +46,7 @@ export const BookFarmAction = (BookingData) => async (dispatch, getState) => {
       
   
       const { data } = await axios.post(
-        `jochalets.herokuapp.com/farms/book/`,
+        `https://jochalets.herokuapp.com/farms/book/`,
         BookingData,
         config
       );

@@ -39,7 +39,7 @@ export const loadFarmDetails = (id) => async (dispatch, getState) => {
       
   
       const { data } = await axios.get(
-        `jochalets.herokuapp.com/farms/${id}/`,
+        `https://jochalets.herokuapp.com/farms/${id}/`,
         config
       );
   

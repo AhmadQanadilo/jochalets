@@ -52,7 +52,7 @@ export const loadFarmLiat = (Data) => async (dispatch, getState) => {
       : "";
 
     const filterUrl = `?ordering=${sortBy}&search=${Location + " " + FarmType}`;
-    const finalUrl = Data.Url?Data.Url:`jochalets.herokuapp.com/farms/${filterUrl}`
+    const finalUrl = Data.Url?Data.Url:`https://jochalets.herokuapp.com/farms/${filterUrl}`
 
     console.log(finalUrl)
     const { data } = await axios.get(finalUrl, config);

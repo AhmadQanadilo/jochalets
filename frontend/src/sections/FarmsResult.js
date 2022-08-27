@@ -18,7 +18,7 @@ function FarmsResult(props) {
 
   const farmListState = useSelector((state) => state.farmListReducer);
   const { farmList, loading, error } = farmListState;
-  const [urlVar, setUrlVar] = useState("http://127.0.0.1:8000/farms/");
+  const [urlVar, setUrlVar] = useState("https://jochalets.herokuapp.com/farms/");
 
   const Pageination = (pageIndex) => {
     if (pageIndex === "next") {
