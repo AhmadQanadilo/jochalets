@@ -3,7 +3,6 @@ import { useTheme } from "@mui/material/styles";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Chip, Container, Grid, Typography } from "@mui/material";
-import { FarmList } from "../helpers/FarmListTeat";
 import ImageSlider from "../components/ImageSlider";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HotelIcon from "@mui/icons-material/Hotel";
@@ -32,6 +31,7 @@ function FarmsResult(props) {
       }
     }
   };
+
 
   useEffect(() => {
     dispatch(loadFarmLiat({ filterData: props.Data, Url: urlVar }));

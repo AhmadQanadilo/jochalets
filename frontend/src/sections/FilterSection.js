@@ -42,7 +42,6 @@ function FilterSection(props) {
 
   const filterSubmitHandler = (event) => {
     event.preventDefault();
-    
 
     props.onSaveFilterData({
       filterLocation: location?.location,
@@ -99,11 +98,11 @@ function FilterSection(props) {
               )}
               isOptionEqualToValue={(option, value) => true}
             />
+
             <Autocomplete
               value={farmType}
               onChange={(event, newValue) => {
                 setFarmType(newValue);
-
               }}
               id="controllable-states-demo"
               options={farmTypeDic}

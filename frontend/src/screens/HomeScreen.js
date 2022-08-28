@@ -15,6 +15,7 @@ function HomeScreen() {
     
     setFilterState(enteredFilterData);
   };
+  
 
   return (
     <Fragment>

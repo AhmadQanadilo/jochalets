@@ -29,9 +29,9 @@ function Hero() {
       sx={{
         display: "flex",
         flexDirection: { xs: "column", sm: "column", md: "row" },
-        gap: "2.4rem",
+        gap: {xs:"1.2rem", md:"2.4rem"},
         padding: "2.4rem 1.2rem",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignItems: "center",
         height: { xs: "90vh", sm: "90vh", md: "80vh" },
         backgroundColor: `${theme.palette.grey[200]}`,
@@ -44,8 +44,8 @@ function Hero() {
           flexDirection: "column",
           justifyContent: "end",
           alignItems: "flex-end",
-          gap: "0.4rem",
-          marginTop: "2.4rem",
+          gap: {xs:"0.2rem", md:"0.4rem"},
+          marginTop: {xs:"1.2rem", md:"2.4rem"},
           width: { xs: "100%", sm: "100%", md: "45vw" },
         }}
       >
@@ -54,7 +54,8 @@ function Hero() {
           sx={{
             fontWeight: `${theme.typography.fontWeightLight}`,
             color: "#081308",
-            textAlign:"end"
+            textAlign:"end",
+            fontSize:{xs:"0.8rem", md:"4.4rem"}
           }}
         >
            وصلناك لافخم شاليهات الاردن وباقل سعر ممكن حاب تتاكد اتواصل معنا 
@@ -64,6 +65,8 @@ function Hero() {
           sx={{
             fontWeight: `${theme.typography.fontWeightBold}`,
             color: "#333",
+            textAlign:"end",
+            fontSize:{xs:"2.8rem", md:"4.4rem"}
           }}
         >
              ! احجز رحلتك صح  
@@ -73,7 +76,7 @@ function Hero() {
           sx={{
             border: "#333 2px solid",
             width: "50%",
-            marginTop: "2.4rem",
+            marginTop: {xs:"1.2rem", md:"2.4rem"},
             color: "#333",
           }}
           onClick={scrollHandler}
@@ -84,7 +87,7 @@ function Hero() {
       <Box
         sx={{
           position: "relative",
-          height: { xs: "60%", sm: "50%", md: "100%" },
+          height: { xs: "60%", sm: "60%", md: "100%" },
           width: { xs: "100%", sm: "100%", md: "50%" },
           padding: "1.2rem",
           overflow: "hidden",
