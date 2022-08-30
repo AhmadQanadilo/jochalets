@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
-import Hero from "../components/Hero";
 import FilterSection from "../sections/FilterSection";
 import FarmsResult from "../sections/FarmsResult";
+import ImageSlider from "../components/HeroImgSlider";
 
 const InitialFilterData = {
   filterFarmType: "",
@@ -19,7 +19,7 @@ function HomeScreen() {
 
   return (
     <Fragment>
-      <Hero />
+      <ImageSlider />
       <FilterSection onSaveFilterData={SaveFilterDataHandler} />
       <FarmsResult Data={filterState} />
     </Fragment>
