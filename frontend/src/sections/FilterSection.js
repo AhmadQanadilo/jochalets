@@ -10,8 +10,12 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import { BorderBottom } from "@mui/icons-material";
 
 function FilterSection(props) {
+  const theme = useTheme();
+
   const [location, setLocation] = useState("جميع المناطق");
   const [sortBy, setSortBy] = useState("");
   const [farmType, setFarmType] = useState("الكل");
@@ -54,18 +58,19 @@ function FilterSection(props) {
       sx={{
         width: "100%",
         display: "flex",
+        borderTop:`3px solid ${theme.palette.secondary.light}`,
+        borderBottom:`3px solid ${theme.palette.secondary.light}`,
+        padding:"1.2rem 0"
       }}
     >
       <Container
         sx={{
-          backgroundColor: "#fff",
         }}
       >
         <form onSubmit={filterSubmitHandler}>
           <Container
             sx={{
               display: "flex",
-              flexDirection: "column",
               gap: "1.2rem",
               paddingTop: "1.2rem",
               width: "100%",

@@ -49,7 +49,7 @@ function HeaderComponent() {
                 fontSize: "1.3rem",
               }}
             >
-              Logo
+              jochalets
             </Button>
 
             {/* smaal screen menu and logo */}
@@ -69,7 +69,7 @@ function HeaderComponent() {
                   fontSize: "1.3rem",
                 }}
               >
-                Logo
+                jochalets
               </Button>
             </Box>
             <Button
@@ -138,8 +138,8 @@ function HeaderComponent() {
                   <Typography
                     variant="h5"
                     noWrap
-                    component="p"
-                    href=""
+                    component="a"
+                    href="https://www.facebook.com/jochalets/"
                     sx={iconStyle}
                   >
                     <FacebookIcon />

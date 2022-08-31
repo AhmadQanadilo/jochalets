@@ -66,6 +66,7 @@ function FarmDetailScreen() {
 
   useEffect(() => {
     dispatch(loadFarmDetails(Params.farmID));
+    window.scrollTo(0, 0)
   }, [dispatch, Params.farmID]);
 
   return (
@@ -221,7 +222,6 @@ function FarmDetailScreen() {
         <Box
           style={{
             width: "100%",
-            height: "100vh",
             display: "flex",
             flexDirection: "column",
             gap: "1.2rem",
