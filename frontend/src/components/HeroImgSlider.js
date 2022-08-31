@@ -115,7 +115,7 @@ function ImageSlider() {
               fontWeight: `700`,
               color: "#333",
               textAlign: "end",
-              fontSize: { xs: "2.8rem", md: "3.4rem" },
+              fontSize: { xs: "2.4rem", md: "3.4rem" },
             }}
           >
             ! احجز <span style={{color:theme.palette.secondary.main}}>شالية</span> بطريقة صح
