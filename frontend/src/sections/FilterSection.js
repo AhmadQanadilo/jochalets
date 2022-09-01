@@ -58,9 +58,10 @@ function FilterSection(props) {
       sx={{
         width: "100%",
         display: "flex",
-        borderTop:`3px solid ${theme.palette.secondary.light}`,
-        borderBottom:`3px solid ${theme.palette.secondary.light}`,
-        padding:"1.2rem 0"
+        borderTop:`3px solid ${theme.palette.grey[500]}`,
+        borderBottom:`3px solid ${theme.palette.grey[500]}`,
+        padding:"1.2rem 0",
+        marginTop:"1.2rem"
       }}
     >
       <Container
