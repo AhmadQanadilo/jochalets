@@ -50,7 +50,7 @@ function App() {
           <HeaderComponent />
           <Routes>
             <Route path="/" element={<HomeScreen />} />
-            <Route path="/admin" element={<FarmCreateScreen />} />
+            <Route path="/JoAdmin" element={<FarmCreateScreen />} />
             <Route path="/:farmID" element={<FarmDetailScreen />} />
           </Routes>
           <Footer />
