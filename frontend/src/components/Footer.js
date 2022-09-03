@@ -9,7 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Facebook, Instagram, Search, WhatsApp } from "@mui/icons-material";
-import Logo from "../resources/images/Logo.png";
+import LogoImg from '../resources/images/jochaletfullwhiteblue.png'
 
 function Copyright() {
   return (
@@ -29,9 +29,7 @@ const iconStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#1976d2",
   fontSize: "2.8rem",
-  borderRaduis: "5px 5px",
   color: "#fff",
   mr: 1,
   "&:hover": {
@@ -76,8 +74,8 @@ function Footer() {
                 width:"100%"
               }}
             >
-              <Box sx={{ height: "20vh", width: "20vh" }}>
-                <img src={Logo} style={{ height: "100%", width: "100%", borderRadius:"50% 50%", position:"center",objectFit:"cover" }}></img>
+              <Box sx={{ height: "10vh", width: "10vh" }}>
+                <img src={LogoImg} style={{ height: "100%", width: "100%", borderRadius:"50% 50%", position:"center",objectFit:"cover" }}></img>
               </Box>
 
               <Box sx={{ display: "flex" }}>

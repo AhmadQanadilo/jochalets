@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import { useParams, Link } from "react-router-dom";
 
 const slideStyles = {
   width: "100%",
@@ -72,7 +73,9 @@ function ImageSlider(props) {
     borderRadius: "10px",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundImage: `url(${slides?.length?slides[currentIndex]?.image:""})`,
+    backgroundImage: `url(${
+      slides?.length ? slides[currentIndex]?.image : ""
+    })`,
   };
   return (
     <div style={sliderStyles}>
@@ -81,7 +84,9 @@ function ImageSlider(props) {
 
         <ArrowCircleRightIcon onClick={goToNext} style={rightArrowStyles} />
       </div>
-      <div style={slideStylesWidthBackground}></div>
+      <Link to={`${props.toLink}`}>
+        <div style={slideStylesWidthBackground} />
+      </Link>
       <div style={dotsContainerStyles}>
         {slides?.map((slide, slideIndex) => (
           <div

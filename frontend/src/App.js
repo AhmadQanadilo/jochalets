@@ -9,6 +9,7 @@ import { CssBaseline, StyledEngineProvider } from "@mui/material";
 import HeaderComponent from "./components/HeaderComponent";
 import FarmDetailScreen from "./screens/FarmDetailScreen";
 import Footer from "./components/Footer";
+import FarmCreateScreen from "./screens/FarmCreateScreen";
 
 export let myTheme = createTheme({
   palette: {
@@ -49,6 +50,7 @@ function App() {
           <HeaderComponent />
           <Routes>
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/admin" element={<FarmCreateScreen />} />
             <Route path="/:farmID" element={<FarmDetailScreen />} />
           </Routes>
           <Footer />

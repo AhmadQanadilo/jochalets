@@ -15,6 +15,8 @@ class FarmListCreateView(generics.ListCreateAPIView):
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['Location', 'priceOnNormalDays','farmType']
     pagination_class = smallSetPagination
+    permission_classes = [AllowAny]
+
 
 
 class FarmDetailsView(generics.RetrieveUpdateDestroyAPIView):
@@ -25,6 +27,7 @@ class FarmDetailsView(generics.RetrieveUpdateDestroyAPIView):
 class FarmWithImageListCreateView(generics.ListCreateAPIView):
     queryset = FarmImageModel.objects.all()
     serializer_class = FarmImageSerializer
+    permission_classes = [AllowAny]
 
 
 class FarmWithImageDetailsView(generics.RetrieveUpdateDestroyAPIView):

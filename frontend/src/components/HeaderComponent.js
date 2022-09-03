@@ -1,5 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import LogoImg from '../resources/images/jochaletfullwhiteblue.png'
+import { useParams, Link } from "react-router-dom";
+
 
 import {
   AppBar,
@@ -55,48 +58,22 @@ function HeaderComponent() {
             {/* smaal screen menu and logo */}
             <Box
               sx={{
-                flexGrow: 1,
-                display: { xs: "flex", md: "none" },
+                display: { xs: "block", md: "none" },
                 position: "relative",
+                width:"25vw",
+       
               }}
             >
-              <Button
+              <Link
                 sx={{
-                  display: { xs: "flex", md: "none" },
-                  textDecoration: "none",
-                  color: "#fff",
-                  fontWeight: 500,
-                  fontSize: "1.3rem",
+                  width:"100%",
                 }}
+                to={''}
               >
-                jochalets
-              </Button>
+                <img style={{height:"100%", width:"50%", objectFit:"cover"}} src={LogoImg}/>
+              </Link>
             </Box>
-            <Button
-              sx={{
-                display: { xs: "flex", md: "none" },
-                textDecoration: "none",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: "1.3rem",
-              }}
-            >
-              <NavLink
-                style={{
-                  mr: 2,
-                  flexGrow: 0,
-                  fontWeight: 500,
-                  letterSpacing: ".3rem",
-                  color: "#fff",
-                  textDecoration: "none",
-                  margin: "0.8rem",
-                  fontSize: "1.2rem",
-                }}
-                to={""}
-              >
-                Home
-              </NavLink>
-            </Button>
+          
             {/* big screen  menu and  */}
 
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
