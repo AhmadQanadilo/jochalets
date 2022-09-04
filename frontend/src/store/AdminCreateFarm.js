@@ -29,11 +29,16 @@ export const FarmCreateSlice = createSlice({
 export const createFarmInstance = (Data) => async (dispatch, getState) => {
   try {
     dispatch(FarmCreateActions.FARM_CREATE_REQUEST());
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
     const config = {
-        headers: {
-          "content-type": "application/json",
-        },
-      };
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${userInfo.access_token}`,
+      },
+    };
 
     const { data } = await axios.post(
       "https://www.jochalets.com/farms/",
@@ -44,7 +49,7 @@ export const createFarmInstance = (Data) => async (dispatch, getState) => {
     dispatch(FarmCreateActions.FARM_CREATE_SUCCESS(data));
   } catch (error) {
     dispatch(
-        FarmCreateActions.FARM_CREATE_FAIL(
+      FarmCreateActions.FARM_CREATE_FAIL(
         error.response && error.response.data?.detail
           ? error.response.data?.detail
           : error.message

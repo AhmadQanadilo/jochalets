@@ -1,9 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import LogoImg from '../resources/images/jochaletfullwhiteblue.png'
+import { useDispatch, useSelector } from "react-redux";
+import LogoImg from "../resources/images/jochaletfullwhiteblue.png";
 import { useParams, Link } from "react-router-dom";
-
-
 import {
   AppBar,
   Box,
@@ -21,6 +20,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTheme } from "@mui/material/styles";
+import { logoutFunction } from "../store/UserSlice";
 
 const iconStyle = {
   mr: 2,
@@ -31,9 +31,30 @@ const iconStyle = {
 
 function HeaderComponent() {
   const theme = useTheme();
+  const dispatch = useDispatch();
 
-  const [anchorElNav, setAnchorElNav] = useState(false);
+  const LinkStyle = {
+    padding: "0.2rem 1.2rem",
+    display: "block",
+    textDecoration: "none",
+  };
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+
   const [anchorElUser, setAnchorElUser] = useState(false);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const logoutHandler = () => {
+    dispatch(logoutFunction());
+  };
 
   return (
     <Fragment>
@@ -55,25 +76,27 @@ function HeaderComponent() {
               jochalets
             </Button>
 
-            {/* smaal screen menu and logo */}
+            {/* small screen logo */}
             <Box
               sx={{
                 display: { xs: "block", md: "none" },
                 position: "relative",
-                width:"25vw",
-       
+                width: "25vw",
               }}
             >
               <Link
                 sx={{
-                  width:"100%",
+                  width: "100%",
                 }}
-                to={''}
+                to={""}
               >
-                <img style={{height:"100%", width:"50%", objectFit:"cover"}} src={LogoImg}/>
+                <img
+                  style={{ height: "100%", width: "50%", objectFit: "cover" }}
+                  src={LogoImg}
+                />
               </Link>
             </Box>
-          
+
             {/* big screen  menu and  */}
 
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
@@ -98,51 +121,12 @@ function HeaderComponent() {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
-                <IconButton sx={{ p: 0 }}>
-                  <Typography
-                    variant="h5"
-                    noWrap
-                    component="p"
-                    href=""
-                    sx={iconStyle}
-                  >
-                    <WhatsAppIcon />
-                  </Typography>
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Open settings">
-                <IconButton sx={{ p: 0 }}>
-                  <Typography
-                    variant="h5"
-                    noWrap
-                    component="a"
-                    href="https://www.facebook.com/jochalets/"
-                    sx={iconStyle}
-                  >
-                    <FacebookIcon />
-                  </Typography>
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Open settings">
-                <IconButton sx={{ p: 0 }}>
-                  <Typography
-                    variant="h5"
-                    noWrap
-                    component="p"
-                    href=""
-                    sx={iconStyle}
-                  >
-                    <InstagramIcon />
-                  </Typography>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{
-                  mt: "45px",
-                  position: "absolute",
-                  top: "0",
-                  left: "-3%",
-                }}
+                sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -154,18 +138,23 @@ function HeaderComponent() {
                   vertical: "top",
                   horizontal: "right",
                 }}
-                open={anchorElUser}
-                onClose={(e) => setAnchorElUser(false)}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={(e) => setAnchorElUser(false)}>
-                  <NavLink to={"/profiles"}> profiles</NavLink>
-                </MenuItem>
-                <MenuItem onClick={(e) => setAnchorElUser(false)}>
-                  <NavLink to={"/exersices"}> exersices</NavLink>
-                </MenuItem>
-                <MenuItem onClick={(e) => setAnchorElUser(false)}>
-                  <NavLink to={"/fooditems"}> fooditems</NavLink>
-                </MenuItem>
+                {userInfo.access_token ? (
+                  <Box>
+                    <Button onClick={logoutHandler}>
+                      <Typography textAlign="center">Log out</Typography>
+                    </Button>
+                    <Link style={LinkStyle} to={"/JoAdmin"}>
+                      <Typography textAlign="center">Admin</Typography>
+                    </Link>
+                  </Box>
+                ) : (
+                  <Link style={LinkStyle} to={"/login"}>
+                    <Typography textAlign="center">login</Typography>
+                  </Link>
+                )}
               </Menu>
             </Box>
           </Toolbar>

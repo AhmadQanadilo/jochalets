@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('auth/', include('drf_social_oauth2.urls', namespace='drf')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html")),
     path("farms/", include("base.urls.farmUrl")),

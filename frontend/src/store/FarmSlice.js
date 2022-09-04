@@ -51,10 +51,32 @@ export const loadFarmLiat = (Data) => async (dispatch, getState) => {
         : Data?.filterData?.filterFarmType
       : "";
 
-    console.log(sortBy)
-    console.log(Location)
-    console.log(FarmType)
+    console.log('normal url')
+    
     const { data } = await axios.get("https://jochalets.herokuapp.com/farms/", { params: { search: `${Location} ${FarmType}` , ordering:sortBy} }, config);
+
+    dispatch(FarmListActions.FARM_LIST_SUCCESS(data));
+  } catch (error) {
+    dispatch(
+      FarmListActions.FARM_LIST_FAIL(
+        error.response && error.response.data?.detail
+          ? error.response.data?.detail
+          : error.message
+      )
+    );
+  }
+};
+export const PageinationFarmList = (url) => async (dispatch, getState) => {
+  try {
+    dispatch(FarmListActions.FARM_LIST_REQUEST());
+    const config = {
+      headers: {
+        "content-type": "application/json",
+      },
+    };
+    
+    console.log('pagenation url')
+    const { data } = await axios.get(url, config);
 
     dispatch(FarmListActions.FARM_LIST_SUCCESS(data));
   } catch (error) {

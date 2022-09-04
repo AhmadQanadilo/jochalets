@@ -1,11 +1,8 @@
 import {
   Button,
   Container,
-  FormControl,
-  FormHelperText,
-  InputAdornment,
-  OutlinedInput,
   TextField,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { uploadFarmImgs } from "../store/AdminImages";
@@ -15,7 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 function FarmCreateScreen() {
   const dispatch = useDispatch();
 
+  const farmCreated = useSelector((state) => state.farmCreated);
+  const { createFarmLoading, CreateFarmError, FarmCreated } = farmCreated;
+
   const [farmImages, setFarmImages] = useState();
+  const [farmID, setFarmID] = useState(null);
+
   const [values, setValues] = useState({
     Location: "",
     name: "",
@@ -46,26 +48,31 @@ function FarmCreateScreen() {
   const ImgsSubmitHandler = (event) => {
     event.preventDefault();
     const images = [...event.target.files];
-    images.map((item) => {
-      console.log(item);
-      const formData = new FormData();
-      formData.append("image", item);
-      formData.append("farm", 6);
-      dispatch(uploadFarmImgs(formData));
-    });
+    if (farmID) {
+      images.map((item) => {
+        console.log(item);
+        const formData = new FormData();
+        formData.append("image", item);
+        formData.append("farm", farmID);
+        dispatch(uploadFarmImgs(formData));
+      });
+    }
   };
-
 
   const farmSubmitHandler = (event) => {
     event.preventDefault();
-    if (values.Location){
-        dispatch(createFarmInstance(values))
-        console.log(values)
+    if (values.Location) {
+      dispatch(createFarmInstance(values));
+      console.log(values);
     }
-
-  }
+  };
   return (
     <Container>
+      <p>
+        جميع المناطق , البحر الميت, جرش , مادبا , عجلون , الزرقاء , اربد ,
+        البلقاء , عمان , الكرك, العقبة
+      </p>
+      <p>شبابية, عائلية , مناسبات , الكل</p>
       <form onSubmit={farmSubmitHandler}>
         <Container
           style={{
@@ -263,16 +270,37 @@ function FarmCreateScreen() {
           </Button>
         </Container>
       </form>
-      <label>choose images</label>
-      <input
-        type={"file"}
-        multiple={"multiple"}
-        id="images"
-        value={farmImages}
-        onChange={(event) => {
-          ImgsSubmitHandler(event);
-        }}
-      ></input>
+      <Container style={{ display: "flex", flexDirection: "column" }}>
+        {FarmCreated.id ? (
+          <Typography variant="h4">
+            رقم المزرعة الجديدة <span style={{fontSize:"2rem"}}>{FarmCreated.id}</span>
+          </Typography>
+        ) : (
+          <Typography variant="h4">لا توجد مزرعة جديدة</Typography>
+        )}
+        <label>choose images</label>
+        <TextField
+          id="farmID-input"
+          label="رقم المزرعة"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={(event) => {
+            setFarmID(event.target.value);
+          }}
+          variant="filled"
+        />
+        <input
+          type={"file"}
+          multiple={"multiple"}
+          id="images"
+          value={farmImages}
+          onChange={(event) => {
+            ImgsSubmitHandler(event);
+          }}
+        ></input>
+      </Container>
     </Container>
   );
 }

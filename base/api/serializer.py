@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
+
 from base.models import FarmModel, FarmImageModel, BookingModel
 
 
@@ -7,8 +9,6 @@ class FarmImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = FarmImageModel
         fields = "__all__"
-
-
 
 
 class FarmSerializer(serializers.ModelSerializer):
@@ -40,13 +40,13 @@ class FarmSerializer(serializers.ModelSerializer):
                   "descrption",
                   ]
 
-  
     def create(self, validated_data):
         images_data = self.context.get('view').request.FILES
         farm = FarmModel.objects.create(**validated_data)
         for image_data in images_data.values():
             FarmImageModel.objects.create(farm=farm, image=image_data)
         return farm
+
 
 class BookingSerializer(serializers.ModelSerializer):
 
@@ -55,3 +55,7 @@ class BookingSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"
