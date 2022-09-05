@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import LogoImg from "../resources/images/jochaletfullwhiteblue.png";
+import LogoImg from "../resources/images/jochaletfullwhitebluehori.png";
 import { useParams, Link } from "react-router-dom";
 import {
   AppBar,
@@ -21,6 +21,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTheme } from "@mui/material/styles";
 import { logoutFunction } from "../store/UserSlice";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const iconStyle = {
   mr: 2,
@@ -91,7 +92,7 @@ function HeaderComponent() {
                 to={""}
               >
                 <img
-                  style={{ height: "100%", width: "50%", objectFit: "cover" }}
+                  style={{ height: "100%", width: "100%", objectFit: "cover" }}
                   src={LogoImg}
                 />
               </Link>
@@ -122,7 +123,7 @@ function HeaderComponent() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <AccountCircleIcon style={{fontSize:"2.8rem", color:"#fff"}}/>
                 </IconButton>
               </Tooltip>
               <Menu
