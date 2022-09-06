@@ -27,7 +27,8 @@ export let myTheme = createTheme({
     text: {
       primary: "#5d4037",
       secondary: "#3e2723",
-    }
+    },
+    
   },
   typography: {
     fontFamily: "'Harmattan', sans-serif",

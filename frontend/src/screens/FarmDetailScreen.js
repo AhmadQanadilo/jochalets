@@ -20,6 +20,8 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import FarmServicesSection from "../sections/FarmServicesSection";
 import { BookFarmAction } from "../store/BookingSlice";
 import CallCenterImg from "../resources/images/callCenter.jpg";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 function FarmDetailScreen() {
   const Params = useParams();
@@ -66,7 +68,7 @@ function FarmDetailScreen() {
 
   useEffect(() => {
     dispatch(loadFarmDetails(Params.farmID));
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [dispatch, Params.farmID]);
 
   return (
@@ -76,187 +78,203 @@ function FarmDetailScreen() {
         textAlign: "right",
       }}
     >
-      <FarmDetailsHero images={farmDetails.images} />
-      <Container
-        sx={{
-          padding: "2.4rem 0",
-          display: "flex",
-          flexDirection: { xs: "column", sm: "column", md: "row" },
-          gap: "1.2rem",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            width: { xs: "100%", sm: "100%", md: "30%" },
-          }}
-        >
-          {(String(BookingData.farm) ===String(Params.farmID)) ? (
-            <Container
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="error">{error}</Message>
+      ) : (
+        <Fragment>
+          <FarmDetailsHero images={farmDetails.images} />
+          <Container
+            sx={{
+              padding: "2.4rem 0",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "column", md: "row" },
+              gap: "1.2rem",
+            }}
+          >
+            <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1.2rem",
-                width: "100%",
-                boxShadow: `${theme.shadows[5]}`,
-                borderRadius: "10px 10px",
-                paddingBottom: "1.2rem",
+                width: { xs: "100%", sm: "100%", md: "30%" },
               }}
             >
-              <Typography style={sectionHeader}>
-                سيقوم فريقنا بالاتصال على <span style={{color:`${theme.palette.primary.main}`}}>{BookingData.customerPhoneNum}</span> 
-              </Typography>
-              <Typography style={sectionHeader}>
-              <span style={{color:`${theme.palette.primary.main}`}}>Jo chalets</span> شكرا لاختيارك  
-              </Typography>
-              <Box
-                sx={{
-                  height: "40vh",
-                  width: "100%",
-                }}
-              >
-                <Box
+              {String(BookingData.farm) === String(Params.farmID) ? (
+                <Container
                   sx={{
-                    backgroundImage: `url(${CallCenterImg})`,
-                    height: "80%",
-                    width: "100%",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                ></Box>
-              </Box>
-            </Container>
-          ) : (
-            <form onSubmit={PostBookingHandler}>
-              <Container
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.2rem",
-                  width: "100%",
-                  boxShadow: `${theme.shadows[5]}`,
-                  borderRadius: "10px 10px",
-                  paddingBottom: "1.2rem",
-                }}
-              >
-                <Typography style={sectionHeader}>احجز استشارة الان</Typography>
-
-                <TextField
-                  id="phoneNumber-input"
-                  type="number"
-                  label="رقم الهاتف"
-                  name="phone number"
-                  value={customerPhoneNum}
-                  onChange={(e) => {
-                    setCustomerPhoneNum(e.target.value);
-                  }}
-                />
-
-                <TextField
-                  id="questNumber-input"
-                  type="number"
-                  label="عدد الأشخاص"
-                  name="quest number"
-                  value={bookingVistoresNum}
-                  onChange={(e) => {
-                    setBookingVistoresNum(e.target.value);
-                  }}
-                />
-                <TextField
-                  id="bookingDate-input"
-                  type="text"
-                  label="أليوم والوقت"
-                  name="bookingDate"
-                  value={bookingDate}
-                  onChange={(e) => {
-                    setBookingDate(e.target.value);
-                  }}
-                />
-
-                <Button variant="contained" color="success" type="submit">
-                  أحجز الأن
-                </Button>
-                <Box
-                  style={{
-                    ...Infostyle,
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    backgroundColor: `${theme.palette.primary.light}`,
-                    color: "#fff",
+                    gap: "1.2rem",
+                    width: "100%",
+                    boxShadow: `${theme.shadows[5]}`,
+                    borderRadius: "10px 10px",
+                    paddingBottom: "1.2rem",
                   }}
                 >
-                  <WhatsAppIcon
-                    sx={{
-                      color: `${theme.palette.common.white}`,
-                      fontSize: "3.2rem",
-                    }}
-                  />
-                  <Typography sx={{ fontSize: "1.6rem" }}>
-                    تواصل على الواتساب
+                  <Typography style={sectionHeader}>
+                    سيقوم فريقنا بالاتصال على{" "}
+                    <span style={{ color: `${theme.palette.primary.main}` }}>
+                      {BookingData.customerPhoneNum}
+                    </span>
                   </Typography>
-
-                  <a
-                    style={{
-                      textDecoration: "none",
-                      color: "#333",
-                      backgroundColor: "#fff",
-                      padding: "0.4rem 0.8rem",
-                      borderRadius: "5px 5px",
+                  <Typography style={sectionHeader}>
+                    <span style={{ color: `${theme.palette.primary.main}` }}>
+                      Jo chalets
+                    </span>{" "}
+                    شكرا لاختيارك
+                  </Typography>
+                  <Box
+                    sx={{
+                      height: "40vh",
+                      width: "100%",
                     }}
-                    href="tel:+962798033926"
                   >
-                    <Typography sx={{ fontSize: "1.6rem" }}>
-                      0798033926
+                    <Box
+                      sx={{
+                        backgroundImage: `url(${CallCenterImg})`,
+                        height: "80%",
+                        width: "100%",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    ></Box>
+                  </Box>
+                </Container>
+              ) : (
+                <form onSubmit={PostBookingHandler}>
+                  <Container
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.2rem",
+                      width: "100%",
+                      boxShadow: `${theme.shadows[5]}`,
+                      borderRadius: "10px 10px",
+                      paddingBottom: "1.2rem",
+                    }}
+                  >
+                    <Typography style={sectionHeader}>
+                      احجز استشارة الان
                     </Typography>
-                  </a>
-                </Box>
-              </Container>
-            </form>
-          )}
-        </Box>
 
-        <Box
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.2rem",
-          }}
-        >
-          <Box
-            style={{
-              ...Infostyle,
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
+                    <TextField
+                      id="phoneNumber-input"
+                      type="number"
+                      label="رقم الهاتف"
+                      name="phone number"
+                      value={customerPhoneNum}
+                      onChange={(e) => {
+                        setCustomerPhoneNum(e.target.value);
+                      }}
+                    />
+
+                    <TextField
+                      id="questNumber-input"
+                      type="number"
+                      label="عدد الأشخاص"
+                      name="quest number"
+                      value={bookingVistoresNum}
+                      onChange={(e) => {
+                        setBookingVistoresNum(e.target.value);
+                      }}
+                    />
+                    <TextField
+                      id="bookingDate-input"
+                      type="text"
+                      label="أليوم والوقت"
+                      name="bookingDate"
+                      value={bookingDate}
+                      onChange={(e) => {
+                        setBookingDate(e.target.value);
+                      }}
+                    />
+
+                    <Button variant="contained" color="success" type="submit">
+                      أحجز الأن
+                    </Button>
+                    <Box
+                      style={{
+                        ...Infostyle,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        backgroundColor: `${theme.palette.primary.light}`,
+                        color: "#fff",
+                      }}
+                    >
+                      <WhatsAppIcon
+                        sx={{
+                          color: `${theme.palette.common.white}`,
+                          fontSize: "3.2rem",
+                        }}
+                      />
+                      <Typography sx={{ fontSize: "1.6rem" }}>
+                        تواصل على الواتساب
+                      </Typography>
+
+                      <a
+                        style={{
+                          textDecoration: "none",
+                          color: "#333",
+                          backgroundColor: "#fff",
+                          padding: "0.4rem 0.8rem",
+                          borderRadius: "5px 5px",
+                        }}
+                        href="tel:+962798033926"
+                      >
+                        <Typography sx={{ fontSize: "1.6rem" }}>
+                          0798033926
+                        </Typography>
+                      </a>
+                    </Box>
+                  </Container>
+                </form>
+              )}
+            </Box>
+
+            <Box
               style={{
-                fontSize: "1.6rem",
-                fontWeight: `${theme.typography.fontWeightMedium}`,
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.2rem",
               }}
             >
-              المكان: {farmDetails.Location}
-            </Typography>
-            <Rating
-              name="simple-controlled"
-              value={farmDetails.rating}
-              readOnly
-            />
-          </Box>
-          <Box style={Infostyle}>
-            <Typography style={sectionHeader}>الوصف العام</Typography>
-            <Divider />
+              <Box
+                style={{
+                  ...Infostyle,
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography
+                  style={{
+                    fontSize: "1.6rem",
+                    fontWeight: `${theme.typography.fontWeightMedium}`,
+                  }}
+                >
+                  المكان: {farmDetails.Location}
+                </Typography>
+                <Rating
+                  name="simple-controlled"
+                  value={farmDetails.rating}
+                  readOnly
+                />
+              </Box>
+              <Box style={Infostyle}>
+                <Typography style={sectionHeader}>الوصف العام</Typography>
+                <Divider />
 
-            <Typography variant="p">{farmDetails.descrption}</Typography>
-          </Box>
-          <FarmServicesSection style={Infostyle} farm={farmDetails} />
-        </Box>
-      </Container>
+                <Typography variant="p">{farmDetails.descrption}</Typography>
+              </Box>
+              <FarmServicesSection style={Infostyle} farm={farmDetails} />
+            </Box>
+          </Container>
+        </Fragment>
+      )}
     </Box>
   );
 }

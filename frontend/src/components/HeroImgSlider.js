@@ -112,7 +112,7 @@ function ImageSlider() {
           }}
         >
           ! احجز{" "}
-          <span style={{ color: theme.palette.secondary.main }}>شاليه</span>{" "}
+          شاليه{" "}
           بطريقة صح
         </Typography>
         <Button

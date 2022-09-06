@@ -59,8 +59,8 @@ function HeaderComponent() {
 
   return (
     <Fragment>
-      <AppBar position="sticky">
-        <Container maxWidth="xl">
+      <AppBar position="sticky" >
+        <Container maxWidth="xl" style={{background:`linear-gradient(179.1deg, rgb(43, 170, 96) 2.3%, rgb(129, 204, 104) 98.3%)`}}>
           <Toolbar
             disableGutters
             sx={{ display: "flex", justifyContent: "space-between" }}
