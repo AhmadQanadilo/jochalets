@@ -43,7 +43,7 @@ export const loginAction = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/auth/token/",
+      "http://www.jochalets.com/auth/token/",
       new URLSearchParams({
         username:  email,
         password: password,
@@ -129,7 +129,7 @@ export const SocialLogin = (Token) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/auth/convert-token",
+      "http://www.jochalets.com/auth/convert-token",
       new URLSearchParams({
         token: Token,
         backend: "facebook",
@@ -168,7 +168,7 @@ export const RefreshToken = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/auth/token/",
+      "http://www.jochalets.com/auth/token/",
       {
         refresh_token: userInfo.refresh_token,
         grant_type: "refresh_token",
