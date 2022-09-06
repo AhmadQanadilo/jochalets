@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-
+#style={{background:`linear-gradient(179.1deg, rgb(43, 170, 96) 2.3%, rgb(129, 204, 104) 98.3%)`}}
 class FarmModel(models.Model):
     location_choices = [
         ("جميع المناطق", "all"),

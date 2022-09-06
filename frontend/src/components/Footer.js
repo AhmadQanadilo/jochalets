@@ -57,7 +57,7 @@ function Footer() {
       component="footer"
       sx={{
         display: "flex",
-        backgroundColor: `${theme.palette.primary.main}`,
+        background: `linear-gradient(179.1deg, rgb(43, 170, 96) 2.3%, rgb(129, 204, 104) 98.3%)`,
         color: "#fff",
       }}
     >

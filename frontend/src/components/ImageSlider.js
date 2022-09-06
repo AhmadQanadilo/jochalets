@@ -84,9 +84,14 @@ function ImageSlider(props) {
 
         <ArrowCircleRightIcon onClick={goToNext} style={rightArrowStyles} />
       </div>
-      <Link to={`${props.toLink}`}>
+      {props.toLink ? (
+        <Link to={`${props.toLink}`}>
+          <div style={slideStylesWidthBackground} />
+        </Link>
+      ) : (
         <div style={slideStylesWidthBackground} />
-      </Link>
+      )}
+
       <div style={dotsContainerStyles}>
         {slides?.map((slide, slideIndex) => (
           <div
