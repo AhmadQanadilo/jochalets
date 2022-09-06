@@ -37,21 +37,21 @@ export const loginAction = (email, password) => async (dispatch) => {
 
     const config = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        accept: "*/*",
+        "content-type": "application/json",
       },
+      accept: "application/json",
     };
 
     const { data } = await axios.post(
-      "http://www.jochalets.com/auth/token/",
-      new URLSearchParams({
-        username:  email,
+      "https://jochalets.herokuapp.com/auth/token/",
+      {
+        username: email,
         password: password,
         grant_type: "password",
         client_id: "OooVzRo0fbxL8eBrxr4V6TY7AbEGeCTTVYzC9Ra1",
         client_secret:
           "4RVUUkKYxGba5rbwGYq2UWJ5q0Sdh4oUMZqoPNQOOe72tvRPotS2qxyWd7J5AIpGKvmfUpUTJXCaBeDJX9c2ifioH9yIjNq7YAGcEvaS4DhWUrGvGpzkDrYiq1Qh3Y05",
-      }),
+      },
       config
     );
 
@@ -124,20 +124,21 @@ export const SocialLogin = (Token) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
+        "content-type": "application/json",
+        accept: "application/json",
       },
     };
 
     const { data } = await axios.post(
-      "http://www.jochalets.com/auth/convert-token",
-      new URLSearchParams({
+      "https://jochalets.herokuapp.com/auth/convert-token",
+      {
         token: Token,
         backend: "facebook",
         grant_type: "convert_token",
         client_id: "OooVzRo0fbxL8eBrxr4V6TY7AbEGeCTTVYzC9Ra1",
         client_secret:
           "4RVUUkKYxGba5rbwGYq2UWJ5q0Sdh4oUMZqoPNQOOe72tvRPotS2qxyWd7J5AIpGKvmfUpUTJXCaBeDJX9c2ifioH9yIjNq7YAGcEvaS4DhWUrGvGpzkDrYiq1Qh3Y05",
-      }),
+      },
       config
     );
 
@@ -168,7 +169,7 @@ export const RefreshToken = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://www.jochalets.com/auth/token/",
+      "https://jochalets.herokuapp.com/auth/token/",
       {
         refresh_token: userInfo.refresh_token,
         grant_type: "refresh_token",
