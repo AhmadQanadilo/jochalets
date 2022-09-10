@@ -155,7 +155,7 @@ function FarmDetailScreen() {
                     }}
                   >
                     <Typography style={sectionHeader}>
-                      مكالمة مجانية للاستفسار 
+                      مكالمة مجانية للاستفسار
                     </Typography>
 
                     <TextField
@@ -193,40 +193,30 @@ function FarmDetailScreen() {
                     <Button variant="contained" color="success" type="submit">
                       أحجز الأن
                     </Button>
-                    <Box
-                      style={{
-                        ...Infostyle,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                        backgroundColor: `${theme.palette.common.white}`,
-                        color: "#fff",
-                      }}
-                    >
-                      <WhatsAppIcon
-                        sx={{
-                          color: `${theme.palette.primary.light}`,
-                          fontSize: "3.2rem",
-                        }}
-                      />
-                      
 
-                      <a
+                    <a style={{textDecoration:"none", color:"#333"}} href="https://wa.me/962798033926">
+                      <Box
                         style={{
-                          textDecoration: "none",
-                          color: "#333",
-                          backgroundColor: "#fff",
-                          padding: "0.4rem 0.8rem",
-                          borderRadius: "5px 5px",
+                          ...Infostyle,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          backgroundColor: `${theme.palette.common.white}`,
+                          
                         }}
-                        href="https://wa.me/962798033926"
                       >
-                       <Typography sx={{ fontSize: "1.6rem" }}>
+                        <WhatsAppIcon
+                          sx={{
+                            color: `${theme.palette.primary.light}`,
+                            fontSize: "3.2rem",
+                          }}
+                        />
+                        <Typography sx={{ fontSize: "1.6rem" }}>
                           0798033926
-                      </Typography>
-                      </a>
-                    </Box>
+                        </Typography>
+                      </Box>
+                    </a>
                   </Container>
                 </form>
               )}
