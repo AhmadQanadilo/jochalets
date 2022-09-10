@@ -33,10 +33,12 @@ const sliderStyles = {
   alignItems:"center",
   gap: "5.2rem",
   boxSizing:"border-box",
-  padding:"4.2rem 0 0 0"
+  padding:"4.2rem 0 0 0",
+  zIndex:"2"
+
 };
 
-function ImageSlider() {
+function ImageSlider(props) {
   const theme = useTheme();
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +69,14 @@ function ImageSlider() {
     //   content: `''`,
     // },
   };
-
+  const scrollHandler = () =>{
+    window.scrollTo({
+      left:0,
+      top:850,
+      behavior:"smooth"
+    })
+    console.log("clicked")
+  }
   useEffect(() => {
     let threeSeconds = 1000 * 3;
 
@@ -117,6 +126,7 @@ function ImageSlider() {
         </Typography>
         <Button
           variant="outlined"
+          onClick={scrollHandler}
           sx={{
             border: "#333 2px solid",
             width: "50%",

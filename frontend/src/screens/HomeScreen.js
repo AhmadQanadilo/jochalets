@@ -11,16 +11,21 @@ const InitialFilterData = {
 
 function HomeScreen() {
   const [filterState, setFilterState] = useState(InitialFilterData);
+  // const [filterCord, setFilterCord] = useState();
   const SaveFilterDataHandler = (enteredFilterData) => {
     
     setFilterState(enteredFilterData);
   };
+
+  // const FiterWindoCordHandler = (enterDate) => {
+  //   setFilterCord(enterDate)
+  // }
   
 
   return (
     <Fragment>
       <ImageSlider />
-      <FilterSection onSaveFilterData={SaveFilterDataHandler} />
+      <FilterSection  onSaveFilterData={SaveFilterDataHandler} />
       <FarmsResult Data={filterState} />
     </Fragment>
   );

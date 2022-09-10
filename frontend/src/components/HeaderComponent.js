@@ -21,7 +21,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTheme } from "@mui/material/styles";
 import { logoutFunction } from "../store/UserSlice";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const iconStyle = {
   mr: 2,
@@ -59,8 +59,13 @@ function HeaderComponent() {
 
   return (
     <Fragment>
-      <AppBar position="sticky" >
-        <Container maxWidth="xl" style={{background:`linear-gradient(179.1deg, rgb(43, 170, 96) 2.3%, rgb(129, 204, 104) 98.3%)`}}>
+      <AppBar position="sticky">
+        <Container
+          maxWidth="xl"
+          style={{
+            background: `linear-gradient(179.1deg, rgb(43, 170, 96) 2.3%, rgb(129, 204, 104) 98.3%)`,
+          }}
+        >
           <Toolbar
             disableGutters
             sx={{ display: "flex", justifyContent: "space-between" }}
@@ -120,7 +125,18 @@ function HeaderComponent() {
             </Box>
             {/* user img and user menu  */}
 
-            <Box sx={{ flexGrow: 0 }}>
+            <a
+              style={{
+                textDecoration: "none",
+                color: "#fff",
+                
+              }}
+              href="https://wa.me/962798033926"
+            >
+              <WhatsAppIcon style={{fontSize:"2.2rem"}} />
+            </a>
+
+            {/* <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <AccountCircleIcon style={{fontSize:"2.8rem", color:"#fff"}}/>
@@ -157,7 +173,7 @@ function HeaderComponent() {
                   </Link>
                 )}
               </Menu>
-            </Box>
+            </Box> */}
           </Toolbar>
         </Container>
       </AppBar>

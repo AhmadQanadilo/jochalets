@@ -79,19 +79,19 @@ function Footer() {
               </Box>
 
               <Box sx={{ display: "flex" }}>
-                <Box component="a" href="https://mui.com/" sx={iconStyle}>
+                <Box component="a" href="https://web.facebook.com/jochalets" sx={iconStyle}>
                   <Facebook />
                 </Box>
                 <Box
                   component="a"
-                  href="https://twitter.com/MUI_hq"
+                  href="https://www.instagram.com/jochalets/"
                   sx={iconStyle}
                 >
                   <Instagram />
                 </Box>
                 <Box
                   component="a"
-                  href="https://twitter.com/MUI_hq"
+                  href="https://wa.me/962798033926"
                   sx={iconStyle}
                 >
                   <WhatsApp />

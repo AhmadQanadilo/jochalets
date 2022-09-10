@@ -155,7 +155,7 @@ function FarmDetailScreen() {
                     }}
                   >
                     <Typography style={sectionHeader}>
-                      احجز استشارة الان
+                      مكالمة مجانية للاستفسار 
                     </Typography>
 
                     <TextField
@@ -197,23 +197,20 @@ function FarmDetailScreen() {
                       style={{
                         ...Infostyle,
                         display: "flex",
-                        flexDirection: "column",
                         justifyContent: "center",
                         alignItems: "center",
                         gap: "0.5rem",
-                        backgroundColor: `${theme.palette.primary.light}`,
+                        backgroundColor: `${theme.palette.common.white}`,
                         color: "#fff",
                       }}
                     >
                       <WhatsAppIcon
                         sx={{
-                          color: `${theme.palette.common.white}`,
+                          color: `${theme.palette.primary.light}`,
                           fontSize: "3.2rem",
                         }}
                       />
-                      <Typography sx={{ fontSize: "1.6rem" }}>
-                        تواصل على الواتساب
-                      </Typography>
+                      
 
                       <a
                         style={{
@@ -223,11 +220,11 @@ function FarmDetailScreen() {
                           padding: "0.4rem 0.8rem",
                           borderRadius: "5px 5px",
                         }}
-                        href="tel:+962798033926"
+                        href="https://wa.me/962798033926"
                       >
-                        <Typography sx={{ fontSize: "1.6rem" }}>
+                       <Typography sx={{ fontSize: "1.6rem" }}>
                           0798033926
-                        </Typography>
+                      </Typography>
                       </a>
                     </Box>
                   </Container>

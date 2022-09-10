@@ -9,13 +9,16 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import { BorderBottom } from "@mui/icons-material";
 
 function FilterSection(props) {
   const theme = useTheme();
+  const FilterBoxRef = useRef()
 
+
+  
   const [location, setLocation] = useState("جميع المناطق");
   const [sortBy, setSortBy] = useState("");
   const [farmType, setFarmType] = useState("الكل");
@@ -53,8 +56,11 @@ function FilterSection(props) {
       filterFarmType: farmType?.label,
     });
   };
+  
+
   return (
     <Box
+      ref={FilterBoxRef}
       sx={{
         width: "100%",
         display: "flex",
@@ -104,19 +110,7 @@ function FilterSection(props) {
               isOptionEqualToValue={(option, value) => true}
             />
 
-            <Autocomplete
-              value={farmType}
-              onChange={(event, newValue) => {
-                setFarmType(newValue);
-              }}
-              id="controllable-states-demo"
-              options={farmTypeDic}
-              getOptionLabel={(option) => `${option.label}`}
-              renderInput={(params) => (
-                <TextField {...params} label="ترتيب حسب" />
-              )}
-              isOptionEqualToValue={(option, value) => true}
-            />
+          
 
             <Button
               type="submit"
