@@ -36,7 +36,7 @@ export const uploadFarmImgs = (Data) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/farms/images/",
+      "https://jochalets.herokuapp.com/farms/images/",
       Data,
       config
     );
