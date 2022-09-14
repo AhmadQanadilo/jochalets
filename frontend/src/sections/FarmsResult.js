@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Chip, Container, Grid, Typography } from "@mui/material";
 import ImageSlider from "../components/ImageSlider";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import HotelIcon from "@mui/icons-material/Hotel";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
@@ -136,16 +135,21 @@ function FarmsResult(props) {
                       marginTop: "1.2rem",
                     }}
                   >
+                    <Grid item xs={12} md={12} lg={12}>
+                      <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center"}}>
+                        <Typography variant="h4">{Farm.name}</Typography>
+                      </Box>
+                    </Grid>
                     <Grid item xs={6} md={6} lg={6}>
                       <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center"}}>
                         <LocationOnIcon />
-                        <Typography variant="h4">{Farm.Location}</Typography>
+                        <Typography variant="h6">{Farm.Location}</Typography>
                       </Box>
                     </Grid>
                     <Grid item xs={6} md={6} lg={6}>
                       <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center"}}>
                         <PeopleIcon />
-                        <Typography variant="h4">{Farm.maxNumOFVistors}</Typography>
+                        <Typography variant="h6">{Farm.maxNumOFVistors}</Typography>
                       </Box>
                     </Grid>
                    

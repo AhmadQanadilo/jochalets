@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
 
 class FarmListCreateView(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
-    queryset = FarmModel.objects.all().order_by("?")
+    queryset = FarmModel.objects.all()
     serializer_class = FarmSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['Location', 'priceOnNormalDays','farmType']

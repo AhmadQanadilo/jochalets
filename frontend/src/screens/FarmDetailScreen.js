@@ -155,7 +155,7 @@ function FarmDetailScreen() {
                     }}
                   >
                     <Typography style={sectionHeader}>
-                      مكالمة مجانية للاستفسار
+                      تواصل مع <span style={{color:theme.palette.primary.main, borderBottom:`solid 3px ${theme.palette.primary.main}`}}>{farmDetails.name}</span>
                     </Typography>
 
                     <TextField
