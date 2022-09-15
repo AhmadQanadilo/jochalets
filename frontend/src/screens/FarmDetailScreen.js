@@ -69,6 +69,8 @@ function FarmDetailScreen() {
   useEffect(() => {
     dispatch(loadFarmDetails(Params.farmID));
     window.scrollTo(0, 0);
+    window.fbq('track', 'Purchase');
+
   }, [dispatch, Params.farmID]);
 
   return (
