@@ -16,7 +16,8 @@ class FarmModel(models.Model):
         ("عمان", "amman"),
         ("الكرك", "alkark"),
         ("العقبة", "aqaba"),
-        ("السلط", "salt")
+        ("السلط", "salt"),
+        ("الغور", "ghoar")
     ]
     Location = models.CharField(
         choices=location_choices, max_length=150, default="جميع المناطق")

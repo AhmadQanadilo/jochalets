@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -24,6 +24,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 function FarmDetailScreen() {
+  const navigate = useNavigate()
   const Params = useParams();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -69,7 +70,7 @@ function FarmDetailScreen() {
   useEffect(() => {
     dispatch(loadFarmDetails(Params.farmID));
     window.scrollTo(0, 0);
-    window.fbq('track', 'Purchase');
+    window.fbq('track', 'framdetail visit');
 
   }, [dispatch, Params.farmID]);
 
@@ -196,7 +197,9 @@ function FarmDetailScreen() {
                       أحجز الأن
                     </Button>
 
-                    <a style={{textDecoration:"none", color:"#333"}} href="https://wa.me/962798033926">
+                    <a style={{textDecoration:"none", color:"#333"}} href="https://wa.me/962798033926" onClick={() => {
+                      window.fbq('Contact', 'whatsapp clicked')
+                    }}>
                       <Box
                         style={{
                           ...Infostyle,
